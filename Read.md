@@ -1,5 +1,5 @@
 # DEMO APP ON GO
-This applicationis is build on GO with following experential
+This applicationis is build on GO with GORM and ECHO web framework with following experential
 
 - Api Endpoint
 - Go echo for routing
@@ -27,17 +27,13 @@ The application should now be reachable at http://localhost:9000.
 
   For adminer go to http://localhost:9001
   For command line access:
-  $ docker compose exec db mysql -u root -p # default password is `root`
+  $ docker compose exec db mysql -u root -p # default password is `admin@123`
 
-## Access mail
 
-- Mailhog
-
-  For mailhog (recieve mail in the docker mailbox) go to http://localhost:9002
 
 ## Running the tests
 
-- Run unit 
+- Run unit feature is ongoing
 
 ```
 docker compose exec app 
