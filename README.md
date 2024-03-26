@@ -12,14 +12,14 @@ This applicationis is build on GO with GORM and ECHO web framework with followin
 $ cp .env.example .env
 $ docker compose build (only first time or if any settings have changed)
 $ docker compose up -d
-$ docker compose exec app composer install
+$ docker compose exec app go run server.go
 ```
 
 The application should now be reachable at http://localhost:8000.
 
-## Running artisan command through docker
+## Running go run command through docker
 
-    $ docker compose exec app p # you can alias `docker compose exec app` in you .bashrc or .zshrc
+    $ docker compose exec app go run server.go # you can alias `docker compose exec app` in you .bashrc or .zshrc
 
 ## Access database
 
