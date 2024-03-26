@@ -15,7 +15,7 @@ $ docker compose up -d
 $ docker compose exec app composer install
 ```
 
-The application should now be reachable at http://localhost:9000.
+The application should now be reachable at http://localhost:8000.
 
 ## Running artisan command through docker
 
@@ -27,7 +27,7 @@ The application should now be reachable at http://localhost:9000.
 
   For adminer go to http://localhost:9001
   For command line access:
-  $ docker compose exec db mysql -u root -p # default password is `admin@123`
+  $ docker compose exec db mysql -u root -p # default password is `@dmin@123`
 
 
 
