@@ -1,0 +1,50 @@
+package config
+
+import (
+	"database/sql"
+	"fmt"
+	"os"
+
+	// _ "github.com/go-sql-driver/mysql" // Import MySQL driver,
+	"gorm.io/driver/mysql"
+	"gorm.io/gorm"
+)
+
+func connectDB() (*sql.DB, error) {
+	// Replace with your actual database credentials
+	// Load environment variables
+	// err := godotenv.Load()
+	// if err != nil {
+	// 	log.Fatal("Error loading .env file")
+	// }
+
+	user := os.Getenv("DB_USER")
+	password := os.Getenv("DB_PASSWORD")
+	host := os.Getenv("DB_HOST")
+	port := os.Getenv("DB_PORT")
+	database := os.Getenv("DB_NAME")
+
+	// Check if environment variables are set
+	// if user == "" || password == "" || host == "" || port == "" || database == "" {
+	// 	fmt.Println("Error: Missing required environment variables.")
+	// 	return false
+	// }
+	// dsn := fmt.Sprintf("%s:%s@tcp(%s:%s)/%s", "username", "password", "localhost", "3306", "your_database_name")
+	// Create connection string
+	dsn := fmt.Sprintf("%s:%s@tcp(%s:%s)/%s", user, password, host, port, database)
+	db, err := sql.Open("mysql", dsn)
+	if err != nil {
+		return nil, err
+	}
+	err = db.Ping()
+	if err != nil {
+		return nil, err
+	}
+	fmt.Println("Connected to MySQL database successfully!")
+	return db, nil
+}
+
+func ormDataBaseConnect() {
+	dsn := "user:pass@tcp(127.0.0.1:3306)/dbname?charset=utf8mb4&parseTime=True&loc=Local"
+	db, err := gorm.Open(mysql.Open(dsn), &gorm.Config{})
+}

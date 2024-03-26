@@ -1,0 +1,69 @@
+version: "3.9"
+services:
+  app:
+    build:
+      dockerfile: Dockerfile
+      context: .
+      target: dev
+    ports: 
+      - 8000:8000
+    # depends_on:
+    #   - db
+    volumes:
+      - .:/opt/app/api
+    networks:
+          - golang-booking
+
+  # db:
+  #   build:
+  #     context: .
+  #     dockerfile: Dockerfile_DB
+  #   image: larvel-db
+  #   # container_name: db
+    # environment:
+    #   MYSQL_USERNAME: root
+    #   MYSQL_DATABASE: merodiscount-booking
+    #   MYSQL_ROOT_PASSWORD: '@dmin@123'
+  #   volumes:
+  #     - dbdata:/var/lib/mysql/
+  #   networks:
+  #         - golang-booking
+  #   ports:
+  #     - "9003:3306"
+
+  db:
+      image: mysql:8.0
+      command: --init-file /usr/local/etc/mysql/init.sql
+      volumes:
+          - db-data:/var/lib/mysql
+          - .docker/mysql/conf.d:/etc/mysql/conf.d
+          - .docker/mysql/init/init.sql:/usr/local/etc/mysql/init.sql
+      environment:
+        MYSQL_USERNAME: root
+        MYSQL_DATABASE: merodiscount-booking
+        MYSQL_ROOT_PASSWORD: 'admin123'
+      restart: unless-stopped
+      ports:
+          - "9003:3306"
+      networks:
+          - golang-booking
+
+  adminer:
+        image: adminer
+        environment:
+            ADMINER_DESIGN: lucas-sandery
+        links:
+            - db
+        ports:
+            - "9001:8080"
+        restart: unless-stopped
+        networks:
+            - golang-booking
+
+networks:
+     golang-booking:
+        driver: bridge
+
+volumes:
+    db-data:
+
