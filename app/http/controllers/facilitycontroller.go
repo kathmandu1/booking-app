@@ -4,6 +4,7 @@ import (
 	models "dinning/app/modals"
 	"dinning/config"
 	"net/http"
+	"strconv"
 
 	"github.com/labstack/echo/v4"
 	"gorm.io/gorm"
@@ -21,16 +22,41 @@ func NewController(db *gorm.DB) *FacilityController {
 // Index handles the root path of your application
 func (c *FacilityController) Index(ctx echo.Context) error {
 	// Access the request body to get user data
+	falility := models.Facility{}
+	db := config.DB()
+
+	result := db.Find(&falility)
+	if err := result.Error; err != nil {
+		// Handle database error appropriately
+		return echo.NewHTTPError(http.StatusInternalServerError, err.Error())
+	}
+
+	return ctx.JSON(http.StatusOK, result)
 
 }
 
 // Save handles the root path of your application
 func (c *FacilityController) Save(ctx echo.Context) error {
+
+	facilityCategoryFromRequest := ctx.FormValue("FacilityCategory")
+	facilityCategoryInt, inputerr := strconv.Atoi(facilityCategoryFromRequest)
+	if inputerr != nil {
+		// Handle error (e.g., invalid input, return an error response)
+		return echo.ErrBadRequest
+
+	}
+	status := (ctx.FormValue("Status"))
+	statusToInt, booleanDataerr := strconv.ParseBool(status)
+	if booleanDataerr != nil {
+		return echo.ErrBadRequest
+
+	}
 	facilityData := models.Facility{
-		ID:               1,
-		FacilityName:     "Jinzhu",
-		Status:           true,
-		FacilityCategory: 1}
+		// ID:               1,
+		FacilityName:     ctx.FormValue("FacilityName"),
+		Status:           statusToInt,
+		FacilityCategory: facilityCategoryInt,
+	}
 
 	if err := ctx.Bind(&facilityData); err != nil {
 		return echo.ErrBadRequest
