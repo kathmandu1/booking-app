@@ -12,7 +12,7 @@ This applicationis is build on GO with GORM and ECHO web framework with followin
 $ cp .env.example .env
 $ docker compose build (only first time or if any settings have changed)
 $ docker compose up -d
-$ docker compose exec app go run server.go
+$ docker compose exec app go mod download (dopwnload dependency)
 ```
 
 The application should now be reachable at http://localhost:8000.
