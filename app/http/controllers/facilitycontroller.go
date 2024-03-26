@@ -20,6 +20,13 @@ func NewController(db *gorm.DB) *FacilityController {
 }
 
 // Index method  return the all the list of facilty
+// @Summary Get Facility List
+// @Description get All data
+// @Accept  json
+// @Produce  json
+// @Success 200 {object} Facility
+// @Header 200 {string} Token "qwerty"
+// @Router /facilities[get]
 func (c *FacilityController) Index(ctx echo.Context) error {
 
 	var facilities []models.Facility
@@ -97,6 +104,15 @@ func (c *FacilityController) Save(ctx echo.Context) error {
 }
 
 // Show handles the facility model of your application
+// @Summary Show Faility
+// @Description get string by ID
+// @ID get-string-by-int
+// @Accept  json
+// @Produce  json
+// @Param id path int true "facility ID"
+// @Success 200 {object} Account
+// @Header 200 {string} Token "qwerty"
+// @Router /facilities/{id} [get]
 func (c *FacilityController) Show(ctx echo.Context) error {
 	id, err := strconv.Atoi(ctx.Param("id"))
 	if err != nil {

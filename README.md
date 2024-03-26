@@ -19,7 +19,7 @@ The application should now be reachable at http://localhost:8000.
 
 ## Running go run command through docker
 
-    $ docker compose exec app go run server.go # you can alias `docker compose exec app` in you .bashrc or .zshrc
+    $ docker compose exec app go run main.go # you can alias `docker compose exec app` in you .bashrc or .zshrc
 
 ## Access database
 
