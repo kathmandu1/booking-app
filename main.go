@@ -5,7 +5,6 @@ import (
 	"dinning/config"
 
 	"github.com/labstack/echo/v4"
-	"github.com/swaggo/echo-swagger" // echo-swagger middleware
 )
 
 // @title Swagger  API Endpoints for Demo App
