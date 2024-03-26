@@ -2,7 +2,7 @@
 This applicationis is build on GO with GORM and ECHO web framework with following experential
 
 - Api Endpoint
-- Go echo for routing
+- Go echo for routing and http context writer and responder
 - Database Connection
 
 
