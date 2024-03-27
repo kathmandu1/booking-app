@@ -1,4 +1,5 @@
-FROM golang:1.18 as base
+# FROM golang:1.18 as base
+FROM golang:1.20 as base
 
 FROM base as dev
 
@@ -9,4 +10,5 @@ WORKDIR /opt/app/api
 
 # CMD ["air", "fresh"]
 
-CMD ["air"]
+# CMD ["air"]
+CMD ["air", "go", "run", "main.go"] 

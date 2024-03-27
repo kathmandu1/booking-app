@@ -1,7 +1,69 @@
 {
     "swagger": "2.0",
     "info": {
-        "contact": {}
+        "description": "This is a Api Endpoints server for using Swagger with Echo.",
+        "title": "Swagger  API Endpoints for Demo App",
+        "contact": {},
+        "version": "1.0"
     },
-    "paths": {}
+    "host": "localhost:8000",
+    "basePath": "/",
+    "paths": {
+        "/facilities": {
+            "get": {
+                "description": "get All data",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "summary": "Get Facility List",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                            "Token": {
+                                "type": "string",
+                                "description": "qwerty"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/facilities/{id}": {
+            "get": {
+                "description": "get string by ID",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "summary": "Show Faility",
+                "operationId": "get-string-by-int",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "facility ID",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                            "Token": {
+                                "type": "string",
+                                "description": "qwerty"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
 }

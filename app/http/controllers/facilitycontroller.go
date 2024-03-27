@@ -24,9 +24,9 @@ func NewController(db *gorm.DB) *FacilityController {
 // @Description get All data
 // @Accept  json
 // @Produce  json
-// @Success 200 {object} Facility
+// @Success 200
 // @Header 200 {string} Token "qwerty"
-// @Router /facilities[get]
+// @Router /facilities [get]
 func (c *FacilityController) Index(ctx echo.Context) error {
 
 	var facilities []models.Facility
@@ -110,7 +110,7 @@ func (c *FacilityController) Save(ctx echo.Context) error {
 // @Accept  json
 // @Produce  json
 // @Param id path int true "facility ID"
-// @Success 200 {object} Account
+// @Success 200
 // @Header 200 {string} Token "qwerty"
 // @Router /facilities/{id} [get]
 func (c *FacilityController) Show(ctx echo.Context) error {

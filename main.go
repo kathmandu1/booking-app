@@ -5,6 +5,7 @@ import (
 	"dinning/config"
 
 	"github.com/labstack/echo/v4"
+	echoSwagger "github.com/swaggo/echo-swagger"
 )
 
 // @title Swagger  API Endpoints for Demo App
@@ -23,7 +24,7 @@ func main() {
 	}
 
 	dbGorm.Ping()
-	// e.GET("/swagger/*", echoSwagger.WrapHandler)
+	e.GET("/swagger/*", echoSwagger.WrapHandler)
 	faciltycontroller.RegisterRoutes(e)
 	e.Logger.Fatal(e.Start(":8000"))
 }
