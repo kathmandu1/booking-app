@@ -12,7 +12,7 @@ This applicationis is build on GO with GORM and ECHO web framework with followin
 $ cp .env.example .env
 $ docker compose build (only first time or if any settings have changed)
 $ docker compose up -d
-$ docker compose exec app go mod download (dopwnload dependency)
+$ docker compose exec app go mod download (download dependency)
 ```
 
 The application should now be reachable at http://localhost:8000.
@@ -29,6 +29,13 @@ The application should now be reachable at http://localhost:8000.
   For command line access:
   $ docker compose exec db mysql -u root -p # default password is `@dmin@123`
 
+## Accessing Swagger Endpoints
+
+- Swager UI
+
+  For Swagger go to http://localhost:8000/swagger/index.html
+  Dont forgot to run swag init when change in annotation, this will update change in swagger:
+  $ swag init
 
 
 ## Running the tests
